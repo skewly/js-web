@@ -1,16 +1,17 @@
 name: Deploy to Amazon ECS
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
 
 env:
-  AWS_REGION: us-east-1                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: skewly-web           # set this to your Amazon ECR repository name
-  ECS_SERVICE: web                 # set this to your Amazon ECS service name
-  ECS_CLUSTER: skewly-production                 # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: .aws/task-definition.json # set this to the path to your Amazon ECS task definition
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY: skewly-web
+  ECS_SERVICE: web
+  ECS_CLUSTER: skewly-production
+  ECS_TASK_DEFINITION: .aws/task-definition.json
   CONTAINER_NAME: skewly-production-web-container
 
 jobs:

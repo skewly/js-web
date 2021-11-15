@@ -1,22 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Auth0Provider } from '@auth0/auth0-react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import Company from './routes/company';
+import Developers from './routes/developers';
+import Pricing from './routes/pricing';
+import Products from './routes/products';
+
+import './index.css';
 import './tailwind.css';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Auth0Provider
-      domain="dev-ko-0isuz.us.auth0.com"
-      clientId="Bg3sS9OKmQLUs1DTHqeeXw7dlx69BGrz"
-      redirectUri={window.location.origin}
-    >
-      <App />
-    </Auth0Provider>
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route path="products" element={<Products />} />
+        <Route path="developers" element={<Developers />} />
+        <Route path="company" element={<Company />} />
+        <Route path="pricing" element={<Pricing />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
