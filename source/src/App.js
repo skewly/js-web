@@ -2,6 +2,8 @@ import React from 'react';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { Outlet } from 'react-router-dom';
 
+import { OrganizationContextProvider } from './components/utilities/context/organization';
+
 import BrandHeader from "./components/layout/header/BrandHeader";
 import AppHeader from "./components/layout/header/AppHeader";
 
@@ -14,10 +16,12 @@ const App = () => {
       redirectUri={window.location.origin}
     >
       <BrandHeader />
-      <AppHeader />
-      <div className="container mx-auto">
-        <Outlet />
-      </div>
+      <OrganizationContextProvider>
+        <AppHeader />
+        <div className="container mx-auto">
+          <Outlet />
+        </div>
+      </OrganizationContextProvider>
     </Auth0Provider>
   );
 }

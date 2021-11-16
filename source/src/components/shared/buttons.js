@@ -7,7 +7,9 @@ const PrimaryButton = (props) => {
             {icon &&
                 <span><i className={icon} /></span>
             }
-            <span className="hidden sm:inline">{text}</span>
+            {text &&
+                <span className="hidden sm:inline">{text}</span>
+            }
         </button>
     )
 }

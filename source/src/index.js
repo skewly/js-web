@@ -9,6 +9,7 @@ import Company from './routes/company';
 import Developers from './routes/developers';
 import Pricing from './routes/pricing';
 import Products from './routes/products';
+import Organizations from './routes/organizations';
 
 import './index.css';
 import './tailwind.css';
@@ -21,6 +22,7 @@ ReactDOM.render(
         <Route path="developers" element={<Developers />} />
         <Route path="company" element={<Company />} />
         <Route path="pricing" element={<Pricing />} />
+        <Route path="organizations" element={<Organizations />} />
       </Route>
     </Routes>
   </BrowserRouter>,
