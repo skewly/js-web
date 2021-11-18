@@ -18,7 +18,7 @@ const App = () => {
       <BrandHeader />
       <OrganizationContextProvider>
         <AppHeader />
-        <div className="container mx-auto">
+        <div className="container max-w-7xl mx-auto px-6">
           <Outlet />
         </div>
       </OrganizationContextProvider>

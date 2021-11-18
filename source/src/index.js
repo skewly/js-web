@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -10,6 +10,7 @@ import Developers from './routes/developers';
 import Pricing from './routes/pricing';
 import Products from './routes/products';
 import Organizations from './routes/organizations';
+import Organization from './routes/organization';
 
 import './index.css';
 import './tailwind.css';
@@ -22,7 +23,10 @@ ReactDOM.render(
         <Route path="developers" element={<Developers />} />
         <Route path="company" element={<Company />} />
         <Route path="pricing" element={<Pricing />} />
-        <Route path="organizations" element={<Organizations />} />
+        <Route path="organizations" element={<Outlet />}>
+          <Route path="" element={<Organizations />} />
+          <Route path=":id" element={<Organization />} />
+        </Route>
       </Route>
     </Routes>
   </BrowserRouter>,

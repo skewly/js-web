@@ -33,9 +33,9 @@ const OrganizationContextProvider = ({ children }) => {
                 audience: `https://api.skewly.io/`
             });
 
-            const userDetailsByIdUrl = `https://api.skewly.io/access/organizations/`;
+            const url = `https://api.skewly.io/access/organizations/`;
 
-            const response = await fetch(userDetailsByIdUrl, {
+            const response = await fetch(url, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                 },
@@ -78,9 +78,9 @@ const OrganizationContextProvider = ({ children }) => {
                 audience: `https://api.skewly.io/`
             });
 
-            const userDetailsByIdUrl = `https://api.skewly.io/access/organizations/`;
+            const url = `https://api.skewly.io/access/organizations/`;
 
-            const response = await fetch(userDetailsByIdUrl, {
+            const response = await fetch(url, {
                 method: 'POST',
                 body: JSON.stringify(organization),
                 headers: {

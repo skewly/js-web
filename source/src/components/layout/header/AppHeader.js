@@ -42,7 +42,7 @@ const AppHeader = () => {
                             <span className="hidden">Application Name / Logo goes here.</span>
                         </div>
                         <div className="flex-grow flex items-center">
-                            <Link to="organizations" className="text-base font-medium text-gray-300 hover:text-white">Organizations</Link>
+
                         </div>
                         <div className="flex-none flex items-center">
                             <OrganizationSelector />
@@ -87,7 +87,7 @@ const OrganizationSelector = () => {
                 <Listbox value={selectedOrganization} onChange={onSelected}>
                     {({ open }) => (
                         <>
-                            <Listbox.Label className="block text-sm font-medium text-gray-300 mr-3"><i className="fas fa-sitemap" /><span className="sr-only">Organization Selector</span></Listbox.Label>
+                            <Listbox.Label className="block text-sm font-medium text-gray-300 mr-3"><Link to="organizations"><i className="fas fa-sitemap" /><span className="sr-only">Organization Selector</span></Link></Listbox.Label>
                             <div className="mt-1 relative">
                                 <Listbox.Button className="relative w-full bg-gray-900 border border-gray-500 text-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                     <span className="flex items-center">
