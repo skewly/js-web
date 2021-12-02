@@ -1,5 +1,6 @@
 import React from 'react';
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import { Tab } from '@headlessui/react';
 
 import { useOrganizationContext } from '../components/utilities/context/organization';
 
@@ -11,9 +12,9 @@ const Route = () => {
     const organization = organizations.find(o => o.id === id);
 
     return (
-        <div className="grid-container grid grid-cols-3 gap-x-6">
+        <div className="grid-container grid grid-cols-4 gap-x-6">
             {organization &&
-                <div className="col-span-3 pt-6">
+                <div className="col-span-4 mt-6">
                     <nav className="flex items-center text-gray-500 text-sm sm:space-x-2 whitespace-nowrap mb-6">
                         <Link to="/organizations" className="hidden sm:block hover:text-gray-900">
                             Organizations
@@ -27,12 +28,20 @@ const Route = () => {
                     <h2 className="text-2xl font-medium leading-6 text-gray-900">{organization.name}</h2>
                 </div>
             }
-            <div className="col-span-3 lg:col-span-1 pt-6">
-                NAV
-            </div>
-            <div className="col-span-3 lg:col-span-2 pt-6">
-                <Outlet />
-            </div>
+            <Tab.Group vertical>
+                <Tab.List as="nav" className="col-span-4 mt-9 lg:col-span-1 shadow overflow-hidden divide-y divide-gray-200 border-b border-gray-200 sm:rounded-lg">
+                    <Tab className="block p-3 min-w-full text-left">Access</Tab>
+                    <Tab className="block p-3 min-w-full text-left">Keys</Tab>
+                    <Tab className="block p-3 min-w-full text-left">Subscription</Tab>
+                    <Tab className="block p-3 min-w-full text-left">Settings</Tab>
+                </Tab.List>
+                <Tab.Panels as="div" className="col-span-4 mt-9 lg:col-span-3">
+                    <Tab.Panel>Access</Tab.Panel>
+                    <Tab.Panel>Keys</Tab.Panel>
+                    <Tab.Panel>Subscription</Tab.Panel>
+                    <Tab.Panel>Settings</Tab.Panel>
+                </Tab.Panels>
+            </Tab.Group>
         </div>
     );
 }

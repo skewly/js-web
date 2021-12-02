@@ -11,6 +11,7 @@ import Pricing from './routes/pricing';
 import Products from './routes/products';
 import Organizations from './routes/organizations';
 import Organization from './routes/organization';
+import OrganizationAccess from './routes/organization-access';
 
 import './index.css';
 import './tailwind.css';
@@ -24,7 +25,7 @@ ReactDOM.render(
         <Route path="company" element={<Company />} />
         <Route path="pricing" element={<Pricing />} />
         <Route path="organizations" element={<Outlet />}>
-          <Route path="" element={<Organizations />} />
+          <Route index element={<Organizations />} />
           <Route path=":id" element={<Organization />} />
         </Route>
       </Route>

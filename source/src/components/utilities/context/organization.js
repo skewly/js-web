@@ -33,7 +33,7 @@ const OrganizationContextProvider = ({ children }) => {
                 audience: `https://api.skewly.io/`
             });
 
-            const url = `https://api.skewly.io/access/organizations/`;
+            const url = `https://api.skewly.io/organizations/`;
 
             const response = await fetch(url, {
                 headers: {
@@ -78,7 +78,7 @@ const OrganizationContextProvider = ({ children }) => {
                 audience: `https://api.skewly.io/`
             });
 
-            const url = `https://api.skewly.io/access/organizations/`;
+            const url = `https://api.skewly.io/organizations/`;
 
             const response = await fetch(url, {
                 method: 'POST',
