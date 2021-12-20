@@ -4,6 +4,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 const initialState = {
     loading: false,
     organizations: [],
+    apikeys: [],
     selectedOrganization: undefined
 };
 
@@ -59,7 +60,61 @@ const OrganizationContextProvider = ({ children }) => {
                 }
             }
 
-            setState({ loading: false, organizations: results, selectedOrganization: selectedOrganization });
+            setState({ ...state, loading: false, organizations: results, selectedOrganization: selectedOrganization });
+        } catch (e) {
+            console.log(e.message);
+        }
+    }
+
+    const fetchApiKeys = async (organizationId) => {
+        try {
+            setState({ ...state, loading: true });
+
+            const accessToken = await getAccessTokenSilently({
+                audience: `https://api.skewly.io/`
+            });
+
+            const url = `https://api.skewly.io/organizations/${organizationId}/apikeys`;
+
+            const response = await fetch(url, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            });
+
+            const { results } = await response.json();
+
+            setState({ ...state, loading: false, apikeys: results });
+        } catch (e) {
+            console.log(e.message);
+        }
+    }
+
+    const addApiKey = async (organizationId) => {
+
+        try {
+            setState({ ...state, loading: true });
+
+            const accessToken = await getAccessTokenSilently({
+                audience: `https://api.skewly.io/`
+            });
+
+            const url = `https://api.skewly.io/organizations/${organizationId}/apikeys/generate`;
+
+            const response = await fetch(url, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            });
+
+            const createdApiKey = await response.json();
+
+            let apikeys = state.apikeys;
+            apikeys.push(createdApiKey);
+
+            setState({ ...state, loading: false, apikeys: apikeys });
+
         } catch (e) {
             console.log(e.message);
         }
@@ -112,7 +167,7 @@ const OrganizationContextProvider = ({ children }) => {
     }
 
     return (
-        <OrganizationContext.Provider value={{ ...state, refetch: fetchOrganizations, setOrganization, addOrganization }}>
+        <OrganizationContext.Provider value={{ ...state, refetch: fetchOrganizations, setOrganization, addOrganization, fetchApiKeys, addApiKey }}>
             {children}
         </OrganizationContext.Provider>
     );

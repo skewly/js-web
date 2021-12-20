@@ -11,7 +11,6 @@ import Pricing from './routes/pricing';
 import Products from './routes/products';
 import Organizations from './routes/organizations';
 import Organization from './routes/organization';
-import OrganizationAccess from './routes/organization-access';
 
 import './index.css';
 import './tailwind.css';
