@@ -31,10 +31,10 @@ const OrganizationContextProvider = ({ children }) => {
             setState({ ...state, loading: true });
 
             const accessToken = await getAccessTokenSilently({
-                audience: `https://api.skewly.io/`
+                audience: process.env.REACT_APP_AUTH_AUDIENCE
             });
 
-            const url = `https://api.skewly.io/organizations/`;
+            const url = `${process.env.REACT_APP_API_HOST}organizations/`;
 
             const response = await fetch(url, {
                 headers: {
@@ -71,10 +71,10 @@ const OrganizationContextProvider = ({ children }) => {
             setState({ ...state, loading: true });
 
             const accessToken = await getAccessTokenSilently({
-                audience: `https://api.skewly.io/`
+                audience: process.env.REACT_APP_AUTH_AUDIENCE
             });
 
-            const url = `https://api.skewly.io/organizations/${organizationId}/apikeys`;
+            const url = `${process.env.REACT_APP_API_HOST}organizations/${organizationId}/apikeys`;
 
             const response = await fetch(url, {
                 headers: {
@@ -96,10 +96,10 @@ const OrganizationContextProvider = ({ children }) => {
             setState({ ...state, loading: true });
 
             const accessToken = await getAccessTokenSilently({
-                audience: `https://api.skewly.io/`
+                audience: process.env.REACT_APP_AUTH_AUDIENCE
             });
 
-            const url = `https://api.skewly.io/organizations/${organizationId}/apikeys/generate`;
+            const url = `${process.env.REACT_APP_API_HOST}organizations/${organizationId}/apikeys/generate`;
 
             const response = await fetch(url, {
                 headers: {
@@ -130,10 +130,10 @@ const OrganizationContextProvider = ({ children }) => {
             setState({ ...state, loading: true });
 
             const accessToken = await getAccessTokenSilently({
-                audience: `https://api.skewly.io/`
+                audience: process.env.REACT_APP_AUTH_AUDIENCE
             });
 
-            const url = `https://api.skewly.io/organizations/`;
+            const url = `${process.env.REACT_APP_API_HOST}organizations/`;
 
             const response = await fetch(url, {
                 method: 'POST',
