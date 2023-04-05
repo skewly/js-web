@@ -268,6 +268,12 @@ const AccountSection = () => {
 
     const { user, loginWithRedirect, logout, isAuthenticated, isLoading } = useAuth0();
 
+    const login = () => {
+        loginWithRedirect({
+            ext_organization: 'dept'
+        });
+    }
+
     if (isLoading) {
         return (
             <span>Loading</span>
@@ -282,7 +288,7 @@ const AccountSection = () => {
                     <ProfileMenu user={user} logout={logout} />
                 </>
                 :
-                <PrimaryButton text="Sign-in / Register" icon="fas fa-user" onClick={() => loginWithRedirect()} />
+                <PrimaryButton text="Sign-in / Register" icon="fas fa-user" onClick={() => login()} />
             }
         </div>
     );
